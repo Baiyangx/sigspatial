@@ -1,0 +1,128 @@
+\section{Related Works}
+\subsection{Pandemic Spread Forecasting}
+Since influenza has a great impact on mankind, many studies have been trying
+to predict and prevent it. Some of them approach the issue in formal way,
+i.e., theoretic and mathematical way, and a representative model in this
+category is the Susceptible Infected Removed (SIR) which is a mathematical
+modelling of infectious diseases in Epidemiology [1][2]. Arun and Iyer
+(2020), based on real-time data from Johns Hopkins Center for Systems Science
+and Engineering, provides the COVID transmission analysis-based prediction of
+the pandemic scale, the recovery rate and the fatality rate. In particular,
+it is noted that the algorithm Rough Set (RS) based Support Vector Machine
+(SVM) has a good performance in prediction of the COVID cases by time. Cooper
+et al.(2020), also modelling the spread of the epidemic based on the SIR,
+presents an updated SIR model. This study tackles on some static assumptions
+by the classical SIR, and can consider new epicentres springing up around the
+world at different times dynamically, by adopting the three differential
+equations named the Ordinary Differential Equations (ODEs). The SIR is a
+powerful tool to such research but it has some limitation in that there are
+so many unexpected variables such as the latent period of virus, quarantine,
+government policy, virus evolution, and etc.
+
+To cope with this issue, there have been a series of studies to refine such
+predictions by utilizing the cutting-edge machine learning and deep learning
+techniques. There is a study for predicting COVID spread in several regions
+based on rather general machine learning model. Wieczorek et al.
+(2020) reports a prediction result of pandemic in several countries in the
+world based on the Recurrent Neural Network with the same data source above
+of the Center for Systems Science and Engineering (CSSE) at Johns Hopkins
+University [25]. [26] has proposed a two branch LSTM based deep neural
+network model that utilizes synthetic data from pre-COVID-19 statistics to
+predict influenza-like disease epidemic in short-term but high resolution
+predictive model.
+
+\subsection{Sentiment Analysis}
+As for sentiment analysis several approaches have been done, and some previous
+studies accomplished success by using machine learning technique. [29] use
+three classes investigation on people’s emotions, which are Analytical,
+Depressed, Angry [29]. They implemented CNN and LSTM to analyze the emotions
+or sentiment of Bangladeshi people in this crisis situations using Deep
+learning and found the relatively high accuracy. [28] developed a Sentiment
+Analysis framework named Compass to do spatio temporal sentiment analysis on
+US Election. This framework facilitates the end user to select an arbitrary
+time range to visualize popularity of the two political parties for each
+county (or state)of US for the specified time range, which can also have the
+potential to be used to show epidemic trends.
+
+Meanwhile, sentiment analysis from social media posts plays a crucial role on
+developing sentiment analysis model which can be used to analyze the dynamics
+of a pandemic world wide. [11] used a Bidirectional Transformer based model
+to analyze sentiments of Indian citizens and compare the results with
+existing models.
+
+\subsection{Topic clustering}
+Topic detection is an important part of addressing the said problem to
+separate points of interest among many candidates. Several noble studies have
+been conducted in the last few decades to mine the most appropriate topic
+associated with a text phrase - both supervised and unsupervised. A topic
+graph-based approach has been proposed by [19] where they find the topic
+graph from vectorized twitter data with term frequency as an heuristic and
+the social relationship between the virtual users. [20] has proposed a
+time-dependent burst detection technique which focuses on two and three word
+data acceleration as spread tendency to make early detection based on the
+keywords. [21] used Latent Dirichlet Allocation (LDA) for topic modeling on
+english twitter data. [23] used large twitter dataset to analyze semantic
+topic clusters using Language Agnostic BERT Sentence Embeddings(LaBSE). Their
+experiment was performed on three different languages (English, French,
+Spanish) and had 10 different categories of annotations such
+as "Donate", "News \& Press", "Prevention" etc. From the annotated data they
+produced the word embeddings in numerical hyperspace and trained on the
+aforementioned classes. Since they had annotated data and pre-selected class
+distribution, their performance was good. In [24] the authors have proposed a
+multi-stage topic clustering that uses both traditional clustering method and
+classification in sequence to generate the final clusters. From each topic
+cluster generated from traditional method, they trained using a multi-class
+classifier to learn the feature space of individual cluster and their method
+then predicted on unseen data based on the training. In [27] authors also
+used LDA to cluster the initial topic terms and then used TF-IDF to generate
+word vector embeddings and find out the word cloud from each of the topic
+cluster. They then compared the sentiment score based on lexicon-based
+approach which uses pretrained model.
+
+\subsection{Tweet data Classification}
+Rabia Batool et al [3] use keyword based knowledge extraction to analyze the
+information from tweets. Moreover, they apply a domain specific seed based
+enrichment technique on the enhance of the extracted knowledge. In our
+research project, we also focus on the keywords in the tweets. Besides, We
+use multiply strategies to exact the keywords based on the part of speech and
+visualize classification results. 
+
+Kyosuke Nishida et al [22] publish an efficient way to categorize invisible
+tweets. By using data compression, they get to handle multilingual tweets in
+the same manner and to effectively utilize the word context of the tweet. Our
+research depends only on the English but the idea to extract the word context
+is important for us because of the 140 character limit. 
+
+\subsection{Tweet data Visualization}
+Yusuke Hara [4] use GPS  data to obtain traffic condition and express  the
+spatial  spread  of  people’s  return-home  behaviour in behaviour analysis
+of a natural disaster. In this case, the researcher need the extra
+information about the public transport and route. Our research have the
+similar requirement, We need to show the geographic of states especially the
+boundary. Thus, combining the location information from dataset with the
+geographic information from other resource is also important. But the
+limitation of application of GIS is that we can't modify the data
+conveniently. And the speed or portability is not idea enough. So we choose
+Geopandas as the toolbox to manage the spatial data, and elasticsearch as the
+query engine. Under this framework, we get to output multi-dimensional
+results and easily control the data format.
+
+Louis Ngamassi et al [5] choose table and line graph to show the statistics
+based on twitter data. they use the classification template developed by
+Bruns et al. [6] to map disaster-related tweet data so as to facilitate their
+use for decision making . For our project, we hold the similar strategy to
+show the result, but we use some graph generation tools to output
+automatically. The advantage to do so is that we can focus more on the data
+structure itself. The resulting field will come from some batch operations
+form other field, which absolutely improves efficiency.
+
+S. M. Mazharul Hoque Chowdhury et al[7] use word cloud graph to show high
+frequency words. Moreover, they apply Naïve Bayes algorithm for the word
+cloud. Then they get only the emotion class related words in the graph. We
+also apply their strategy to our project with more classification criteria.
+Since some high frequency words contain few information like the city name in
+some topic. We add some removal instruction before using them. The other
+things is that part of speech are also another important basis to do the
+classification and affects the classification results of emotional words. So
+we propose to use composite classification criteria as the basis for
+displaying word cloud graphs.
