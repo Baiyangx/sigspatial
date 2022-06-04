@@ -1,21 +1,19 @@
 \section{Method and Data} \label{sec:method_and_data}
-From a holistic view of research method (Figure~\ref{fig:Research Method}), it consists of three
-independent but relational parts of the dataset import, dataset Processing,
-and machine model training for making binary classifier.
+From a holistic view of research method (Figure~\ref{fig:Research Method}), it
+consists of three independent but relational parts of the dataset import,
+dataset Processing, and machine model training for making binary classifier.
 
 In dataset import process, since the dataset is un-hydrated, we needed
 to “hydrate” the data by building a process that will fetch the tweet content
 by querying with the Tweet ID. After hydrating, the data are saved in a local
 storage, and by using Tweets API the data are completed to be analyzed and
 stored in the Elasticsearch server. 
-
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{imgs/Research_Method.png}
 \caption{Research Method}
 \label{fig:Research Method}
 \end{figure}
-
 In dataset processing step, after importing data into Elasticsearch server in
 batches, we choose a spatio-temporal research area such
 as “7/20/2021-02/01/2022 in California”, and we get the target dataset from
@@ -61,14 +59,14 @@ subjects.
 
 \subsubsection{Tweet Data structure}
 The original data contains tweets ID and sentiment score calculated by
-database publisher Figure~\ref{fig:Tweet dataset}. We use tweets ID to request twitter API in batch
-and get completed information, including content, UTC time, geographic
-location. All of these information are fully imported into the server after
-splicing with sentiment score.  In this process, we will transfer the
-longitude and latitude to the geometry, then we can apply some spatial
-operator to handle them. Time format is another point in this way, we
-transfer all the time appearing in our project to UTC format. Then all
-filtering of time will be consistent. 
+database publisher Figure~\ref{fig:Tweet dataset}. We use tweets ID to
+request twitter API in batch and get completed information, including
+content, UTC time, geographic location. All of these information are fully
+imported into the server after splicing with sentiment score.  In this
+process, we will transfer the longitude and latitude to the geometry, then we
+can apply some spatial operator to handle them. Time format is another point
+in this way, we transfer all the time appearing in our project to UTC format.
+Then all filtering of time will be consistent. 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{imgs/row_tweets.png}
@@ -77,10 +75,11 @@ filtering of time will be consistent.
 \end{figure}
 \subsubsection{Tweet Data Pre-processing Method}
 The pre-processing process includes regex filtering, tokenization and tagging,
-removal of stop words (Figure~\ref{fig:Tokenization and tag}). Regex filtering process used to delete some
-proper noun or URL. We can also delete all the hashtag or the emojis. Normal
-phrase or locations can also be a optional. Basically, we will set different
-filtering rules according to the task goals and model requirements. 
+removal of stop words (Figure~\ref{fig:Tokenization and tag}). Regex
+filtering process used to delete some proper noun or URL. We can also delete
+all the hashtag or the emojis. Normal phrase or locations can also be a
+optional. Basically, we will set different filtering rules according to the
+task goals and model requirements. 
 
 Tokenization and tag are important to our project. We use nltk package to
 process the sentence in the tweets and decompose the content into single
@@ -121,7 +120,8 @@ those specific terms. We also needed to remove all the punctuation marks so
 that it drops the redundant and recurring feature that don't contribute to
 the clustering.
 
-Example of these regular expression technique is shown in the (Figure~\ref{fig:Shows the conceptual}): 
+Example of these regular expression technique is shown in the (Figure~\ref
+{fig:Shows the conceptual}): 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{imgs/cleaning_w_regex.png}
@@ -148,16 +148,17 @@ distribution of possible terms (words).
 \includegraphics[width=0.5\textwidth]{imgs/topic_clusters.png}
 \caption{\label{fig:Shows the conceptual} Shows the conceptual document space and topic clusters}
 \end{figure}
-The size of the circle in (Figure~\ref{fig:Shows the conceptual2}) determines the number of documents that
-correspond to the number of clusters. For example, Cluster 4 shaded in blue
-has more documents correspondence than Cluster 3.
+The size of the circle in (Figure~\ref{fig:Shows the conceptual2}) determines
+the number of documents that correspond to the number of clusters. For
+example, Cluster 4 shaded in blue has more documents correspondence than
+Cluster 3.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{imgs/term_clusters.png}
 \caption{\label{fig:Shows the conceptual2} Shows the conceptual topic space and term clusters}
 \end{figure}
-In the (Figure~\ref{fig:Completed dataset}), the circle size of the term clusters visualize the frequency
-of the terms appearing in the documents.
+In the (Figure~\ref{fig:Completed dataset}), the circle size of the term
+clusters visualize the frequency of the terms appearing in the documents.
 
 \subsection{Spatial Data Mining and Visualization}
 \subsubsection{Data Mining Method}

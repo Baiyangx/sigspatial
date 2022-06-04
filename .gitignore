@@ -123,3 +123,4 @@ results/
 *.fdb_latexmk
 *.fls
 .latexmk/
+.doccontents/

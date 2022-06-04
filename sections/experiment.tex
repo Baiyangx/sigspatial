@@ -14,16 +14,18 @@ elasticsearch server (Figure~\ref{fig:Data in elasticsearch}).
 \includegraphics[width=0.5\textwidth]{imgs/es_result.png}
 \caption{\label{fig:Data in elasticsearch}Data in elasticsearch}
 \end{figure}
-Then we apply the pre-processing program on the dataset. Shows the result of words dataset (Figure~\ref{fig:Topic Clusters}). 
+Then we apply the pre-processing program on the dataset. Shows the result of
+words dataset (Figure~\ref{fig:Topic Clusters}). 
 
 \subsection{Topic Clustering}
-After training on a filtered subset of the dataset, we get the topic cluster shown in (Figure~\ref{fig:Rank of Terms}) below: 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.5\textwidth]{imgs/cluster_topics.png}
-        \caption{\label{fig:Topic Clusters}Topic Clusters produced using LDA}
-        \label{fig:lda_topic}
-    \end{figure}
+After training on a filtered subset of the dataset, we get the topic cluster
+shown in (Figure~\ref{fig:Rank of Terms}) below: 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imgs/cluster_topics.png}
+    \caption{\label{fig:Topic Clusters}Topic Clusters produced using LDA}
+    \label{fig:lda_topic}
+\end{figure}
 For demonstration, we show the term distribution and rank of topic cluster 1
 from the trained model which has been visualized using pyLDAViz library in
 (Figure~\ref{fig:Result of inference}):
@@ -35,14 +37,13 @@ from the trained model which has been visualized using pyLDAViz library in
 For testing the trained model, we have taken samples from unseen data and used
 inference technique to find out the topic probability distribution for those
 samples. In the example below, for demonstration, we have shown 1 example
-(Figure~\ref{fig:Result of inference}) data point which has a 0.4344 out of 1 chance of belonging to
-cluster 1 and 0.5184 out of 1 chance of belonging to cluster 7. The example
-contained the text: 
+(Figure~\ref{fig:Result of inference}) data point which has a 0.4344 out of 1
+chance of belonging to cluster 1 and 0.5184 out of 1 chance of belonging to
+cluster 7. The example contained the text: 
 \begin{displayquote}
 "Happy New Year May 2022 be the year we are finally rid of Covid and the world
  becomes a better place goodbye2021 hello2022 @ Madison Ohio"
 \end{displayquote}
-
 Figure 11 shows the term ranks of topic cluster 7 which has highest rank for
 the word "COVID" (Figure~\ref{fig:Shows the term frequency}).
 \begin{figure}[H]
@@ -71,10 +72,11 @@ score range.
 \end{figure}
 
 This image above show the filtering result on envelope(minimum orthogonal
-bounding rectangle) (Figure~\ref{fig:Representation of unfiltered points}). By this method, we narrow down the geographic
-range of the tweets and mark up them on the map. We can find that there are
-some points outside of the state. Then we apply some spacial operator to
-filter them (Figure~\ref{fig:Spatial operators}).
+bounding rectangle) (Figure~\ref{fig:Representation of unfiltered points}).
+By this method, we narrow down the geographic range of the tweets and mark up
+them on the map. We can find that there are some points outside of the state.
+Then we apply some spacial operator to filter them (Figure~\ref
+{fig:Spatial operators}).
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{imgs/sp_operator.png}
@@ -101,7 +103,9 @@ several states. All of them are collected during July 2021 to February 2022.
 The density of this point will be an important metrics for us to decide
 whether we can use the dataset as the research object. If the number of
 points is too small, the training result will be too random to reflect the
-real tendency (Figure~\ref{fig:Distribution of tweets}~\ref{fig:Distribution of tweets in Florida}~\ref{fig:Distribution in Los Angeles}). 
+real tendency (Figure~\ref{fig:Distribution of tweets}~\ref
+{fig:Distribution of tweets in Florida}~\ref{fig:Distribution in Los
+Angeles}). 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.4\textwidth]{imgs/CA.png}
