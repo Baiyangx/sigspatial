@@ -1,7 +1,5 @@
-\documentclass[conference]{IEEEtran}
-\IEEEoverridecommandlockouts
-\usepackage{cite}
-\usepackage{amsmath,amssymb,amsfonts}
+\documentclass[sigconf, review]{acmart}
+\usepackage{amsmath,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
@@ -9,22 +7,27 @@
 \usepackage{float}
 \usepackage{csquotes}
 \usepackage{hyperref}
-\usepackage[ruled, linesnumbered]{algorithm2e} 
+\usepackage[ruled, linesnumbered]{algorithm2e}
 
-\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Machine Learning-based Spatial Modeling of Sentiment Towards COVID-19}
+\title{{\it PanTop}: Pandemic Topic Detection and Monitoring system}
 
-\author{\IEEEauthorblockN{Yangxiao Bai, Abir Mohammad Hadi, Youngsun Jang, Kwanghee Won, Kaiqun Fu}
-\IEEEauthorblockA{\textit{Department of Electrical Engineering and Computer Science} \\
-\textit{South Dakota State University}\\
-Brookings, South Dakota\\
-\{bai.yangxiao,abirmohammad.hadi,youngsun.jang,kwanghee.won,kaiqun.fu\}@sdstate.edu}
+% \author{\IEEEauthorblockN{Yangxiao Bai, Abir Mohammad Hadi, Youngsun Jang, Kwanghee Won, Kaiqun Fu}
+% \IEEEauthorblockA{\textit{Department of Electrical Engineering and Computer Science} \\
+% \textit{South Dakota State University}\\
+% Brookings, South Dakota\\
+% \{bai.yangxiao,abirmohammad.hadi,youngsun.jang,kwanghee.won,kaiqun.fu\}@sdstate.edu}
+% }
+
+\author{Yangxiao Bai, Abir Mohammad Hadi, Youngsun Jang, Kwanghee Won, Kaiqun Fu}
+\email{{bai.yangxiao,abirmohammad.hadi,youngsun.jang,kwanghee.won,kaiqun.fu}@sdstate.edu}
+\affiliation{
+  \institution{Department of Electrical Engineering and Computer Science\\South Dakota State University}
+  \city{Brookings}
+  \state{South Dakota}
+  \country{USA}
 }
-
-\maketitle
 
 \begin{abstract} 
 Diverse efforts to combat the COVID-19 pandemic have continued throughout the
@@ -45,10 +48,11 @@ and analytical toolboxes. Case studies found in abundance in our proposed
 system can justify empirical analysis. Ultimately, we believe that our
 proposed system accurately reflects how public sentiments change over time
 and locations, along with specific pandemic topics. 
- \end{abstract}
-\begin{IEEEkeywords}
-social media analysis, pandemic, topic modeling, storyline generation
-\end{IEEEkeywords}
+\end{abstract}
+
+\keywords{social media analysis, topic modeling, storyline generation}
+
+\maketitle
 
 \input{sections/introduction}
 % \input{sections/related}
@@ -57,7 +61,7 @@ social media analysis, pandemic, topic modeling, storyline generation
 \input{sections/case}
 \input{sections/conclusion}
 
-\bibliographystyle{IEEEtran}
+\bibliographystyle{ACM-Reference-Format}
 \bibliography{references}
 
 \end{document}
