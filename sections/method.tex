@@ -129,21 +129,36 @@ Example of these regular expression technique is shown in the (Figure~\ref
     \caption{Right-most column showing cleaned text with Regex}
     \label{fig:Right-most column}
 \end{figure}
-After cleaning the data, it was added as a new column in the data frame. The
-data frame then was used to generate a word cloud using a Python package
-named WordCloud for visualizing the frequency of the terms. Then the data was
-processed to remove the English stop words using a library called NLTK which
-has available corpus to remove the stop words using the built-in methods. The
-reason for cleaning the stop words is to discard them from the consideration
-of clustering since those stop words, such as, pronouns, prepositions,
-articles are used most frequently and can bias the cluster from finding the
-appropriate meaningful terms for the clustered topics. After cleaning the
-stopwords, we used a Python package which has built in support for Latent
-Dirichlet Allocation. LDA is a popular static technique to find the most
-probable terms to determine a topic cluster which describes a subset of
-documents in the dataset. Documents can be considered a distribution of
-possible topic clusters whereas each topic cluster can be seen as a
-distribution of possible terms (words).
+\begin{algorithm}[htpb!]
+    \KwIn{$\X, \Y$}
+    \KwOut{$\W$}
+    Initialize $\rho = 1$, $\W^{(0)}$, $\U_{w}^{(0)}$, $\U_{1}^{(0)}$\;
+    Initialize $\epsilon^{r} > 0, \epsilon^{s} > 0$, $\mathrm{MAX\_ITER}$\;
+    \For{$k = 1 : \mathrm{MAX\_ITER}$}
+    {%
+        %\tcp{Update primal variables.}
+        Update $\W^{(k)}$ with BCD using~\ref{opt:grad}\;
+        %\tcp{Update dual variables.}
+        Update $\U_{w}^{({k})}$ with $\prox_{f_{1}, 1/\rho}(\U_{1}^{(k - 1)}
+        + \W^{(k)})$\;
+        %\tcp{Update Lagrangian multiplier.}
+        Update $\U_{1}^{({k})}$ with Equation~\ref{equ:update_lm}\;
+        Compute $r$ and $s$ by Equations~\ref{equ:update_residuals}\;
+        \If{$r < \epsilon^{r}$ and $s < \epsilon^{s}$}
+        {%
+            break\;
+        }
+        %\If{$r > 10s$}
+        %{%
+        %    $\rho \leftarrow 2\rho$\;
+        %}
+        %\ElseIf{$10r < s$}
+        %{%
+        %    $\rho \leftarrow \rho / 2$\;
+        %}
+    }
+    \caption{LDA-BERT Topical Clustering}\label{alg:admm}
+\end{algorithm}
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{imgs/topic_clusters.png}
