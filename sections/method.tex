@@ -56,7 +56,7 @@ delete all the irrelevant information or the missing information data. The
 whole memory size up to 142Mi. The number of useful pieces of information
 reaches 388,719. However, the geographical distribution of this tweets is
 very uneven. So we try to select states with large sample sizes as research
-subjects. 
+subjects.
 
 \subsubsection{Tweet Data structure}
 The original data contains tweets ID and sentiment score calculated by
@@ -129,36 +129,36 @@ Example of these regular expression technique is shown in the (Figure~\ref
     \caption{Right-most column showing cleaned text with Regex}
     \label{fig:Right-most column}
 \end{figure}
-\begin{algorithm}[htpb!]
-    \KwIn{$\X, \Y$}
-    \KwOut{$\W$}
-    Initialize $\rho = 1$, $\W^{(0)}$, $\U_{w}^{(0)}$, $\U_{1}^{(0)}$\;
-    Initialize $\epsilon^{r} > 0, \epsilon^{s} > 0$, $\mathrm{MAX\_ITER}$\;
-    \For{$k = 1 : \mathrm{MAX\_ITER}$}
-    {%
-        %\tcp{Update primal variables.}
-        Update $\W^{(k)}$ with BCD using~\ref{opt:grad}\;
-        %\tcp{Update dual variables.}
-        Update $\U_{w}^{({k})}$ with $\prox_{f_{1}, 1/\rho}(\U_{1}^{(k - 1)}
-        + \W^{(k)})$\;
-        %\tcp{Update Lagrangian multiplier.}
-        Update $\U_{1}^{({k})}$ with Equation~\ref{equ:update_lm}\;
-        Compute $r$ and $s$ by Equations~\ref{equ:update_residuals}\;
-        \If{$r < \epsilon^{r}$ and $s < \epsilon^{s}$}
-        {%
-            break\;
-        }
-        %\If{$r > 10s$}
-        %{%
-        %    $\rho \leftarrow 2\rho$\;
-        %}
-        %\ElseIf{$10r < s$}
-        %{%
-        %    $\rho \leftarrow \rho / 2$\;
-        %}
-    }
-    \caption{LDA-BERT Topical Clustering}\label{alg:admm}
-\end{algorithm}
+% \begin{algorithm}[htpb!]
+%     \KwIn{$\X, \Y$}
+%     \KwOut{$\W$}
+%     Initialize $\rho = 1$, $\W^{(0)}$, $\U_{w}^{(0)}$, $\U_{1}^{(0)}$\;
+%     Initialize $\epsilon^{r} > 0, \epsilon^{s} > 0$, $\mathrm{MAX\_ITER}$\;
+%     \For{$k = 1 : \mathrm{MAX\_ITER}$}
+%     {%
+%         %\tcp{Update primal variables.}
+%         Update $\W^{(k)}$ with BCD using~\ref{opt:grad}\;
+%         %\tcp{Update dual variables.}
+%         Update $\U_{w}^{({k})}$ with $\prox_{f_{1}, 1/\rho}(\U_{1}^{(k - 1)}
+%         + \W^{(k)})$\;
+%         %\tcp{Update Lagrangian multiplier.}
+%         Update $\U_{1}^{({k})}$ with Equation~\ref{equ:update_lm}\;
+%         Compute $r$ and $s$ by Equations~\ref{equ:update_residuals}\;
+%         \If{$r < \epsilon^{r}$ and $s < \epsilon^{s}$}
+%         {%
+%             break\;
+%         }
+%         %\If{$r > 10s$}
+%         %{%
+%         %    $\rho \leftarrow 2\rho$\;
+%         %}
+%         %\ElseIf{$10r < s$}
+%         %{%
+%         %    $\rho \leftarrow \rho / 2$\;
+%         %}
+%     }
+%     \caption{LDA-BERT Topical Clustering}\label{alg:admm}
+% \end{algorithm}
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{imgs/topic_clusters.png}
