@@ -42,12 +42,7 @@ information.
 We collect data from March 2020 to March 2022. These data comes form hundreds
 of single CSV files, Since they are stored by date. So a batch process is
 necessary to import from these files. After that we store all of these data
-to Elasticsearch, in order to facilitate subsequent steps to call. After
-delete all the irrelevant information or the missing information data. The
-whole memory size up to 142Mi. The number of useful pieces of information
-reaches 388,719. However, the geographical distribution of this tweets is
-very uneven. So we try to select states with large sample sizes as research
-subjects.
+to Elasticsearch, in order to facilitate subsequent steps to call on demand. 
 
 \subsubsection{Tweet Data structure}
 The original data contains tweets ID and sentiment score calculated by
@@ -56,8 +51,8 @@ request twitter API in batch and get completed information, including
 content, UTC time, geographic location. All of these information are fully
 imported into the server after splicing with sentiment score.  In this
 process, we will transfer the longitude and latitude to the geometry, then we
-can apply some spatial operator to handle them. Time format is another point
-in this way, we transfer all the time appearing in our project to UTC format.
+can apply some spatial operator to handle them. Time format is another point.
+In this way, we transfer all the time appearing in our project to UTC format.
 Then all filtering of time will be consistent. 
 \begin{figure}[h]
 \centering
@@ -68,10 +63,7 @@ Then all filtering of time will be consistent.
 \subsubsection{Tweet Data Pre-processing Method}
 The pre-processing process includes regex filtering, tokenization and tagging,
 removal of stop words (Figure~\ref{fig:Tokenization and tag}). Regex
-filtering process used to delete some proper noun or URL. We can also delete
-all the hashtag or the emojis. Normal phrase or locations can also be a
-optional. Basically, we will set different filtering rules according to the
-task goals and model requirements. 
+filtering process used to delete some proper noun or URL. We set different filtering rules according to the task goals and model requirements. For example, deleting all emojis, filtering misspelled words based on word list.  
 
 Tokenization and tag are important to our project. We use nltk package to
 process the sentence in the tweets and decompose the content into single
@@ -87,58 +79,27 @@ The purpose of removal of stopwords is to avoid distractions from common words
 on the topic. The nltk package provide a library of stopwords and we can set
 our own list of common words based on the theme. It's an important step to
 get good performance of machine learning models and we can adjust it to fit
-the current strategy we used. It's a part of fine turning. 
+the current strategy we used.
 
-\subsection{Topic Clustering}
-For topic clustering, first we collected the data from Elasticsearch server by
-filtering using spatial queries. The data had text, geo-tag and tweet ID as
-data columns. Since the text contained lots of unwanted strings or
-characters, we needed to clean the data. 
+\subsection{Sentence vector generation}
+We propose to use a LDA-BERT based method to generate vector for each tweet. First, we break down tweets into body and hashtags. For the body part, we tokenize the sentences and train them with BERT. Then we get vectors which contains hundreds of dimensions. For the hashtags part, we apply LDA on them and generate vectors of corresponding dimensions according to the number of topics to be divided into. To combine the information form two resource, we use autoencoder to compress combined vector.
 
-Some tweet contains hypertext URL such as: 
-\begin{verbatim}
-    https://t.co/{tweet_id}
-\end{verbatim} and some other URLs as shown in (Figure~\ref{fig:Right-most column}):
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.5\textwidth]{url.JPG}
-%     \caption{An example of Tweet containing URL}
-%     \label{fig:tw_url}
-% \end{figure}
-    
-We needed to filter these unnecessary texts from the actual twitter data using
-some regular expression operator and cleaning the part that corresponds to
-those specific terms. We also needed to remove all the punctuation marks so
-that it drops the redundant and recurring feature that don't contribute to
-the clustering.
-
-Example of these regular expression technique is shown in the (Figure~\ref
-{fig:Shows the conceptual}): 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{imgs/cleaning_w_regex.png}
-    \caption{Right-most column showing cleaned text with Regex}
-    \label{fig:Right-most column}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{imgs/framework/autoencoder.png}
+\caption{structure of autoencoder}
+\label{fig:autoencoder}
 \end{figure}
 
+By this method, we succeed in reducing the dimensionality of the resulting vector while preserving topic features.
 
+\subsection{Topic Clustering}
+We use Time Series KMeans to do the clustering. Because each tweet is attached with publish time, we need to consider its temporal correlation while clustering. 
 
-In the (Figure~\ref{fig:Completed dataset}), the circle size of the term
-clusters visualize the frequency of the terms appearing in the documents.
-
-\subsection{Spatial Data Mining and Visualization}
-\subsubsection{Data Mining Method}
-First, we import all data into Elasticsearch server. Then we get to use
-different type of query instructions to request data on demands. In order to
-narrow down the scope of our research range, we build two methods and
-well-package them, which are query by time and query by location.
-Regionally-targeted requests are often broken down by state. So we use two
-key steps to accomplish the filtering to the data. First, get the minimum
-circumscribed rectangle of the state to search. Next, filter out all points
-outside  the boundary by spatial operations. 
-
-\subsubsection{Visualization Method}
-We use matplotlib to generate the map automatically. At the same time, we
-distinguish different types of points and areas by marking the map with
-different colors. Depending on the focus, we'll display a national map or a
-state map.
+\subsection{Visualization}
+\subsubsection{Wordcloud}
+Wordcloud is a graph to show the high frequency words. After clustering, we get labels which indicate which cluster the current tweet belongs to. Then we get all word lists under the same cluster and concat them. Finially the wordcloud will show higher frequency words in bigger font.
+\subsubsection{Centroid sentence}
+To study topic relevance, we calculate the cosine similarity between every tweet and cluster centroid point and pick up the nearest tweet as the most representative tweet.  
+\subsubsection{Storyline}
+To generate a graph showing all topic relationships, we caculate the similarity between all the topic pair. Then sort the calculation results from high to low. Based on it, we set a threshold of edge. An edge will be generated between all topic pairs whose similarity is greater than the threshold. Finally we import the point and edge information into Graphviz and get a graph.(Fig~\ref{fig:storyline for lda_bert}) 
