@@ -1,8 +1,7 @@
 \section{Method and Data} 
 \label{sec:method}
-From a holistic view of research method (Figure~\ref{fig:Research Method}), it
-consists of three independent but relational parts of the dataset import,
-dataset Processing, and machine model training for making binary classifier.
+From a holistic view of research method (Figure~\ref{fig:System structure}), it
+consists several relational parts of the dataset import,dataset Processing, and machine model training for topic clustering
 
 In dataset import process, since the dataset is un-hydrated, we needed
 to “hydrate” the data by building a process that will fetch the tweet content
@@ -11,25 +10,17 @@ storage, and by using Tweets API the data are completed to be analyzed and
 stored in the Elasticsearch server. 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{imgs/freamwork.jpg}
+\includegraphics[width=0.5\textwidth]{imgs/framework/framework.png}
 \caption{System structure}
-\label{fig:Research Method}
+\label{fig:System structure}
 \end{figure}
 In dataset processing step, after importing data into Elasticsearch server in
-batches, we choose a spatio-temporal research area such
-as “7/20/2021-02/01/2022 in California”, and we get the target dataset from
+batches, we choose a research scope and we get the target dataset from
 Elasticsearch. By doing spatial query and filtering task, the target dataset
 can be visualized into a map. Furthermore, after processing the data by using
 techniques such as the regex filtering, tokenization and tagging, and
-removing stop words, it is possible to retrieve a word could graph
-representing the distribution of keywords according to their degree of
-priority.
+removing stop words, it is possible to apply a topic clustering model to get topics.
 
-In model training session, the processed data are delivered to two independent
-modules: (a) the binary classifier for sentiment analysis (b) topic
-clustering module based on an advanced Deep Learning model architecture such
-as the Transformer. To summarize, once the data get processed, they are
-applied with the machine learning models to be analyzed.
 
 \subsection{Tweet Data Collection and Processing}
 \subsubsection{Tweet Data Collection process}
@@ -129,52 +120,9 @@ Example of these regular expression technique is shown in the (Figure~\ref
     \caption{Right-most column showing cleaned text with Regex}
     \label{fig:Right-most column}
 \end{figure}
-% \begin{algorithm}[htpb!]
-%     \KwIn{$\X, \Y$}
-%     \KwOut{$\W$}
-%     Initialize $\rho = 1$, $\W^{(0)}$, $\U_{w}^{(0)}$, $\U_{1}^{(0)}$\;
-%     Initialize $\epsilon^{r} > 0, \epsilon^{s} > 0$, $\mathrm{MAX\_ITER}$\;
-%     \For{$k = 1 : \mathrm{MAX\_ITER}$}
-%     {%
-%         %\tcp{Update primal variables.}
-%         Update $\W^{(k)}$ with BCD using~\ref{opt:grad}\;
-%         %\tcp{Update dual variables.}
-%         Update $\U_{w}^{({k})}$ with $\prox_{f_{1}, 1/\rho}(\U_{1}^{(k - 1)}
-%         + \W^{(k)})$\;
-%         %\tcp{Update Lagrangian multiplier.}
-%         Update $\U_{1}^{({k})}$ with Equation~\ref{equ:update_lm}\;
-%         Compute $r$ and $s$ by Equations~\ref{equ:update_residuals}\;
-%         \If{$r < \epsilon^{r}$ and $s < \epsilon^{s}$}
-%         {%
-%             break\;
-%         }
-%         %\If{$r > 10s$}
-%         %{%
-%         %    $\rho \leftarrow 2\rho$\;
-%         %}
-%         %\ElseIf{$10r < s$}
-%         %{%
-%         %    $\rho \leftarrow \rho / 2$\;
-%         %}
-%     }
-%     \caption{LDA-BERT Topical Clustering}\label{alg:admm}
-% \end{algorithm}
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{imgs/topic_clusters.png}
-\caption{ Shows the conceptual document space and topic clusters}
-\label{fig:Shows the conceptual}
-\end{figure}
-The size of the circle in (Figure~\ref{fig:Shows the conceptual2}) determines
-the number of documents that correspond to the number of clusters. For
-example, Cluster 4 shaded in blue has more documents correspondence than
-Cluster 3.
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{imgs/term_clusters.png}
-\caption{ Shows the conceptual topic space and term clusters}
-\label{fig:Shows the conceptual2}
-\end{figure}
+
+
+
 In the (Figure~\ref{fig:Completed dataset}), the circle size of the term
 clusters visualize the frequency of the terms appearing in the documents.
 
