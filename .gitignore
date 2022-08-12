@@ -118,7 +118,6 @@ results/
 *.log
 *.synctex.gz
 *.dvi
-*.pdf
 *.out
 *.fdb_latexmk
 *.fls
