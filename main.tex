@@ -1,5 +1,8 @@
-\documentclass[sigconf, review]{acmart}
-\usepackage{amsmath,amsfonts}
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
@@ -8,6 +11,8 @@
 \usepackage{csquotes}
 \usepackage{hyperref}
 \usepackage[ruled, linesnumbered]{algorithm2e}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \begin{document}
 
@@ -20,14 +25,23 @@
 % \{bai.yangxiao,abirmohammad.hadi,youngsun.jang,kwanghee.won,kaiqun.fu\}@sdstate.edu}
 % }
 
-\author{Yangxiao Bai, Abir Mohammad Hadi, Youngsun Jang, Kwanghee Won, Kaiqun Fu}
-\email{{bai.yangxiao,abirmohammad.hadi,youngsun.jang,kwanghee.won,kaiqun.fu}@sdstate.edu}
-\affiliation{
-  \institution{Department of Electrical Engineering and Computer Science\\South Dakota State University}
-  \city{Brookings}
-  \state{South Dakota}
-  \country{USA}
+% \author{Yangxiao Bai, Abir Mohammad Hadi, Youngsun Jang, Kwanghee Won, Kaiqun Fu}
+% \email{{bai.yangxiao,abirmohammad.hadi,youngsun.jang,kwanghee.won,kaiqun.fu}@sdstate.edu}
+% \affiliation{
+%   \institution{Department of Electrical Engineering and Computer Science\\South Dakota State University}
+%   \city{Brookings}
+%   \state{South Dakota}
+%   \country{USA}
+% }
+
+\author{\IEEEauthorblockN{Yangxiao Bai, Abir Mohammad Hadi, Youngsun Jang, Kwanghee Won, Kaiqun Fu}
+\IEEEauthorblockA{\textit{Department of Electrical Engineering and Computer Science} \\
+\textit{South Dakota State University}\\
+Brookings SD, USA \\
+\{bai.yangxiao,abirmohammad.hadi,youngsun.jang,kwanghee.won,kaiqun.fu\}@sdstate.edu}
 }
+
+\maketitle
 
 \begin{abstract} 
 Diverse efforts to combat the COVID-19 pandemic have continued throughout the
@@ -50,9 +64,9 @@ proposed system accurately reflects how public sentiments change over time
 and locations, along with specific pandemic topics. 
 \end{abstract}
 
-\keywords{social media analysis, topic modeling, storyline generation}
-
-\maketitle
+\begin{IEEEkeywords}
+social media analysis, topic modeling, storyline generation
+\end{IEEEkeywords}
 
 \input{sections/introduction}
 % \input{sections/related}
@@ -61,7 +75,7 @@ and locations, along with specific pandemic topics.
 \input{sections/case}
 \input{sections/conclusion}
 
-\bibliographystyle{ACM-Reference-Format}
+\bibliographystyle{IEEEtran}
 \bibliography{references}
 
 \end{document}
