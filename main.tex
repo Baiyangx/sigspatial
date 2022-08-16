@@ -11,6 +11,8 @@
 \usepackage{csquotes}
 \usepackage{hyperref}
 \usepackage[ruled, linesnumbered]{algorithm2e}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
@@ -18,11 +20,11 @@
 
 \title{{\it PanTop}: Pandemic Topic Detection and Monitoring system}
 
-\author{\IEEEauthorblockN{Yangxiao Bai, Abir Mohammad Hadi, Youngsun Jang, Kwanghee Won, Kaiqun Fu}
+\author{\IEEEauthorblockN{Yangxiao Bai, Kwanghee Won, Kaiqun Fu}
 \IEEEauthorblockA{\textit{Department of Electrical Engineering and Computer Science} \\
 \textit{South Dakota State University}\\
 Brookings SD, USA \\
-\{bai.yangxiao,abirmohammad.hadi,youngsun.jang,kwanghee.won,kaiqun.fu\}@sdstate.edu}
+\{bai.yangxiao,kwanghee.won,kaiqun.fu\}@sdstate.edu}
 }
 
 \maketitle
@@ -37,7 +39,7 @@ we propose a deep learning-based topic monitoring and storyline extraction
 system for COVID-19 that is capable of analyzing public sentiment and
 pandemic trends. The proposed method is able to retrieve Twitter data related
 to COVID-19 and conduct spatiotemporal analysis. In addition to
-spatiotemporal data mining, the system implements a sentiment analysis on
+spatiotemporal data mining, the system implements an attention analysis on
 Twitter users. Furthermore, a deep learning component of the system provides
 monitoring and modeling capabilities for topics based on the most advanced
 natural language processing models. The proposed system includes a
@@ -45,7 +47,7 @@ user-interactive visualization component that provides audience monitoring
 and analytical toolboxes. Case studies found in abundance in our proposed
 system can justify empirical analysis. Ultimately, we believe that our
 proposed system accurately reflects how public sentiments change over time
-and locations, along with specific pandemic topics. 
+along with pandemic topics. 
 \end{abstract}
 
 \begin{IEEEkeywords}
